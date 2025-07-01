@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Warriors League Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Oxanium', sans-serif;
+      background: url('https://images.hdqwalls.com/download/garena-free-fire-one-more-round-4k-wj-1920x1080.jpg') no-repeat center center/cover;
+      background-attachment: fixed;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(10, 5, 20, 0.7);
+      z-index: -1;
+    }
+    
+    .form-container {
+      background: rgba(20, 15, 35, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(255, 50, 50, 0.6);
+      width: 100%;
+      max-width: 420px;
+      border: 1px solid rgba(255, 80, 80, 0.3);
+      transform: translateY(20px);
+      opacity: 0;
+      animation: fadeInUp 0.8s forwards 0.3s;
+    }
+    
+    h2 {
+      text-align: center;
+      color: #ff4d4d;
+      margin-bottom: 25px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 28px;
+      letter-spacing: 1px;
+      text-shadow: 0 0 10px rgba(255, 50, 50, 0.5);
+      position: relative;
+      padding-bottom: 10px;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, #ff4d4d, transparent);
+      border-radius: 3px;
+    }
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .input-group {
+      position: relative;
+    }
+    
+    input {
+      width: 100%;
+      padding: 14px 15px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      outline: none;
+      font-family: 'Oxanium', sans-serif;
+      font-size: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    input:focus {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 80, 80, 0.5);
+      box-shadow: 0 0 10px rgba(255, 80, 80, 0.3);
+    }
+    
+    input::placeholder {
+      color: rgba(200, 200, 200, 0.7);
+    }
+    
+    button {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #ff4040, #e33030);
+      color: white;
+      font-weight: 600;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.5px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(227, 48, 48, 0.4);
+    }
+    
+    button:hover {
+      background: linear-gradient(135deg, #e33030, #c02020);
+      transform: translateY(-2px);
+      box-shadow: 0 7px 20px rgba(227, 48, 48, 0.6);
+    }
+    
+    button:active {
+      transform: translateY(1px);
+    }
+    
+    button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(45deg);
+      transition: all 0.5s ease;
+      opacity: 0;
+    }
+    
+    button:hover::after {
+      left: 100%;
+      opacity: 1;
+    }
+    
+    .instructions {
+      font-size: 14px;
+      margin-top: 25px;
+      color: rgba(230, 230, 230, 0.9);
+      line-height: 1.5;
+      word-wrap: break-word;
+      background: rgba(0, 0, 0, 0.2);
+      padding: 15px;
+      border-radius: 8px;
+      border-left: 3px solid #ff4d4d;
+      animation: fadeIn 1s forwards 0.8s;
+      opacity: 0;
+    }
+    
+    .instructions b {
+      color: #ff8080;
+      font-weight: 600;
+    }
+    
+    .emoji {
+      margin-right: 5px;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    .floating-icons {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+    
+    .floating-icon {
+      position: absolute;
+      opacity: 0.1;
+      animation: float 15s infinite linear;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-50px) rotate(180deg);
+      }
+      100% {
+        transform: translateY(0) rotate(360deg);
+      }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 25px 20px;
+      }
+      
+      h2 {
+        font-size: 24px;
+      }
+      
+      input {
+        padding: 12px 15px;
+      }
+      
+      button {
+        padding: 13px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="floating-icons">
+    <div class="floating-icon" style="top: 10%; left: 15%; font-size: 24px;">⚔️</div>
+    <div class="floating-icon" style="top: 25%; right: 10%; font-size: 30px;">🛡️</div>
+    <div class="floating-icon" style="bottom: 15%; left: 20%; font-size: 20px;">🎯</div>
+    <div class="floating-icon" style="bottom: 30%; right: 15%; font-size: 26px;">🏆</div>
+  </div>
+  
+  <div class="form-container">
+    <h2>WARRIORS LEAGUE REGISTRATION</h2>
+    <form id="registrationForm">
+      <div class="input-group">
+        <input type="text" id="ign" placeholder="In-Game Name" required>
+      </div>
+      <div class="input-group">
+        <input type="text" id="uid" placeholder="Game UID" required>
+      </div>
+      <div class="input-group">
+        <input type="text" id="upi" placeholder="Your UPI ID" required>
+      </div>
+      <div class="input-group">
+        <input type="text" id="upiName" placeholder="UPI Name" required>
+      </div>
+      <div class="input-group">
+        <input type="text" id="tcode" placeholder="Tournament Code" required>
+      </div>
+      <button type="submit">SUBMIT VIA WHATSAPP</button>
+    </form>
+    <div class="instructions">
+      <span class="emoji">🔰</span> Enter the Tournament Code exactly as given on the poster or WhatsApp channel.<br>
+      <span class="emoji">🕒</span> The code contains tournament date, time, and type.<br>
+      <span class="emoji">💡</span> Example: <b>WL-06JULY5PM-SQ</b><br>
+      <span class="emoji">📲</span> Click submit to send your registration via WhatsApp.
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("registrationForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const ign = document.getElementById("ign").value.trim();
+      const uid = document.getElementById("uid").value.trim();
+      const upi = document.getElementById("upi").value.trim();
+      const upiName = document.getElementById("upiName").value.trim();
+      const tcode = document.getElementById("tcode").value.trim();
+
+      const msg = `🔥 *Warriors League Registration* 🔥%0A%0A🎮 *IGN:* ${ign}%0A🆔 *UID:* ${uid}%0A💳 *UPI ID:* ${upi}%0A👤 *UPI Name:* ${upiName}%0A🎟️ *Tournament Code:* ${tcode}%0A%0A📌 *Note:* Please confirm your payment after this message.`;
+
+      const phoneNumber = "919315612481"; // Change to your WhatsApp number with country code
+      const whatsappURL = `https://wa.me/${phoneNumber}?text=${msg}`;
+
+      // Add button click animation
+      const button = e.target.querySelector('button');
+      button.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        button.style.transform = '';
+        window.open(whatsappURL, '_blank');
+      }, 200);
+    });
+    
+    // Add input focus effects
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => {
+      input.addEventListener('focus', function() {
+        this.parentElement.style.transform = 'scale(1.02)';
+      });
+      input.addEventListener('blur', function() {
+        this.parentElement.style.transform = 'scale(1)';
+      });
+    });
+  </script>
+</body>
+</html>
